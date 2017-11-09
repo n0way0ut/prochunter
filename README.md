@@ -55,7 +55,7 @@ How to use
      - Install the module in persistence mode.
     sudo ./prochunter.py -p 
     
-     - Invoke prochunter via /sys and show hidden processes (if any).
+     - Invoke prochunter via /sys and show hidden processes (if any), useful with cron.
     sudo ./prochunter.py -d
     
     - Invoke prochunter via /sys and show hidden processes and send logs to a remote syslog server.

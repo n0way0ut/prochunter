@@ -1,0 +1,7 @@
+.o 
+.mod.c 
+.order 
+Module.symvers 
+.prochunter 
+.tmp_
+tags

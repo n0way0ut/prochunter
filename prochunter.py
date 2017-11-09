@@ -47,7 +47,7 @@ def ko_build_tree(ph_list):
         tmp[3] = tmp[3].replace('\n', '')
         plist[tmp[2]].append(tmp[3])
         tree[tmp[1]].append(tmp[2])
-    #plist.pop(str(os.getpid()))
+    plist.pop(str(os.getpid()))
     return tree
 
 

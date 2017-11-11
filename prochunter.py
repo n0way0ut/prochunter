@@ -62,7 +62,8 @@ def ko_build_tree(ph_list):
         tmp[3] = tmp[3].replace('\n', '')
         plist[tmp[2]].append(tmp[3])
         tree[tmp[1]].append(tmp[2])
-    plist.pop(str(os.getpid()))
+    if not ph_ko_exist():
+        plist.pop(str(os.getpid()))
     return tree
 
 
@@ -203,7 +204,6 @@ def main():
         k = build_ph_list(KMSG, 1)
         ko_t = ko_build_tree(k)
         ps_t = ps_build_tree()
-        print(plist)
         diff = diff_tree(plist, ps_t)
         if len(diff) > 0:
             print("\n[!] Found %d hidden process" % len(diff))

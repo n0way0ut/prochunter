@@ -189,15 +189,15 @@ def main():
         ko_t = ko_build_tree(k)
         ps_t = ps_build_tree()
         print(plist)
-        hidden_procs = diff_tree(plist, ps_t)
-        if len(hidden_procs) > 0:
+        diff = diff_tree(plist, ps_t)
+        if len(diff) > 0:
             print("\n[!] Found %d hidden process" % len(diff))
             print("\nPID\tName")
             for p in diff:
                 print(p+'\t'+plist[p][0])
         else:
             print("[*] No hidden process found")
-        sys.exit(1)
+            sys.exit(1)
         if args.syslog:
             log = logging.getLogger(__name__)
             #log.setLevel(logging.DEBUG)
@@ -205,7 +205,8 @@ def main():
             #formatter = logging.Formatter('%(module)s.%(funcName)s: %(message)s')
             #handler.setFormatter(formatter)
             log.addHandler(handler)
-            log.critical(hidden_procs)
+            for p in diff:
+                log.critical(p+"|"+plist[p][0])
             sys.exit(1)
 
 
